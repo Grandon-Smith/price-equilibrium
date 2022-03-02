@@ -2,16 +2,43 @@
   <div id="app">
     <Header/>
     <div class="body">
+      <BodyHeader/>
+      <div class="basicDescription">
+        <p class='descriptionTitle'>
+          A brief description
+        </p>
+        <p class='descriptionBody'>
+          The equilibrium price is the price at which
+           the quantity demanded equals the quantity 
+           supplied. It is determined by the intersection
+            of the demand and supply curves. A surplus 
+            exists if the quantity of a good or service 
+            supplied exceeds the quantity demanded at the 
+            current price; it causes downward pressure on price.
+        </p>
+      </div>
       <TextExpander
-        headerText='Header Text here'
-        bodyText='
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Consequuntur tempore debitis minus deserunt! Molestias dolorem alias
-          voluptatibus reiciendis vitae assumenda sunt amet ad veritatis vero
-          nobis autem, distinctio at neque! Architecto facere nuo, est magnam
-          ab quia cumque consequatur eos laborum!'
+        headerText='More details here'
+        :bodyText='expanderBodyText'
       />
-      <Graph />
+      <div>
+        <div class="graphImgWrapper">
+          <img src="https://cdn.kastatic.org/ka-perseus-images/63f47bb804ff4c50a60f967b7b29acdfd5fd450a.jpg" alt="graph showing pricing equilibrium.">
+        </div>
+        <p>
+          The demand curve, D, and the supply curve, S, 
+          intersect at the equilibrium point E, with an 
+          equilibrium price of 1.4 dollars and an equilibrium 
+          quantity of 600. The equilibrium is the only price
+           where quantity demanded is equal to quantity supplied. 
+           At a price above equilibrium, like 1.8 dollars, 
+           quantity supplied exceeds the quantity demanded,
+            so there is excess supply. At a price below equilibrium,
+            such as 1.2 dollars, quantity demanded exceeds 
+            quantity supplied, so there is excess demand.
+        </p>
+      </div>
+      <Graph/>
 
     </div>
 
@@ -19,9 +46,11 @@
 </template>
 
 <script>
+
 import Graph from './components/Graph.vue';
 import Header from './components/Header.vue';
 import TextExpander from './components/TextExpander.vue';
+import BodyHeader from './components/BodyHeader.vue'
 
 export default {
   name: 'App',
@@ -32,7 +61,11 @@ export default {
 
   data() {
     return {
-
+      expanderBodyText: [
+        "An increase in demand, all other things unchanged, will cause the equilibrium price to rise; quantity supplied will increase. A decrease in demand will cause the equilibrium price to fall; quantity supplied will decrease.",
+        "An increase in supply, all other things unchanged, will cause the equilibrium price to fall; quantity demanded will increase. A decrease in supply will cause the equilibrium price to rise; quantity demanded will decrease.",
+        "To determine what happens to equilibrium price and equilibrium quantity when both the supply and demand curves shift, you must know in which direction each of the curves shifts and the extent to which each curve shifts."
+      ]
     }
   },
 
@@ -44,10 +77,13 @@ export default {
     Graph,
     Header,
     TextExpander,
+    BodyHeader,
   },
 
 
-
+  methods: {
+    
+  },
 
 
   mounted: function() {
@@ -59,7 +95,7 @@ export default {
 <style>
   :root {
     --clr-darkBg: #555;
-    --clr-accent: rgb(75, 138, 233);
+    --clr-accent: #26a7c4;
   }
 
   *,
@@ -68,6 +104,18 @@ export default {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: 'nunito', sans-serif;
+  }
+
+  p {
+    color: rgb(105, 105, 105);
+    font-size: .9rem;
+    line-height: 1.4em;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
   }
 
   #app {
@@ -75,7 +123,31 @@ export default {
   }
 
   .body {
+    max-width: 50rem;
+    margin: 0 auto;
     padding: .5rem .75rem;
+  }
+
+  .descriptionTitle {
+    color: var(--clr-darkBg);
+    font-weight: 600;
+    margin-bottom: .5rem;
+  }
+
+  .descriptionBody {
+    font-size: .9rem;
+    color: rgb(105, 105, 105);
+    margin-bottom: .75rem;
+  }
+
+  .graphImgWrapper {
+    border: 1px solid rgba(0, 0, 0, 0.425);
+    border-radius: 5px;
+    width: 100%;
+    padding: .5rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    overflow: hidden;
   }
 
 </style>
