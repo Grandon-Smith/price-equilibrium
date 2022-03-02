@@ -32,7 +32,13 @@
       </button>
     </div>
     <transition name='fadeIn'>
-      <p v-if='infoMessage.length' class='errorMsg'>{{ infoMessage }}</p>
+      <p 
+        v-if='infoMessage.length'
+        class='errorMsg' 
+        tabindex='0'
+      >
+       {{ infoMessage }}
+      </p>
     </transition>
   </div>
 </template>
