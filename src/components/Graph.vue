@@ -18,7 +18,9 @@
       <span class='yAxisTitle'>Price</span>
       <span class='xAxisTitle'>Quantity</span>
     </div>
-    <div class="btnContainer">
+    <div class="btnContainer"
+    :class='{ expanded : infoMessage.length }'
+    >
       <button 
         :class='btn.classes'
         type='button' 
@@ -29,6 +31,9 @@
         {{ btn.value }}
       </button>
     </div>
+    <transition name='fadeIn'>
+      <p v-if='infoMessage.length' class='errorMsg'>{{ infoMessage }}</p>
+    </transition>
   </div>
 </template>
 
@@ -47,11 +52,13 @@
 
     data() {
       return {
+        infoMessage: '',
         btnArr: [
           {
             value: 'Reduce Supply',
             selected: false,
-            classes: 'eqAdjustBtn'
+            classes: 'eqAdjustBtn',
+            infoMessage: 'As supply reduces, the price at equilibrium increases'
           },
           {
             value: 'Clear',
@@ -61,7 +68,8 @@
           {
             value: 'Increase Supply',
             selected: false,
-            classes: 'eqAdjustBtn'
+            classes: 'eqAdjustBtn',
+            infoMessage: 'As supply increases, the price at equilibrium decreases'
           },
         ]
       }
@@ -76,6 +84,7 @@
         }
 
         this.btnArr[idx].selected = true;
+        this.infoMessage = this.btnArr[idx].infoMessage ? this.btnArr[idx].infoMessage : ''
       }
     }
   }
@@ -96,6 +105,7 @@
     padding: 1.5rem;
     max-width: 30rem;
     margin: 0 auto;
+    position: relative;
   }
 
   .chartWrapper {
@@ -162,7 +172,11 @@
     padding-top: 3rem;
     display: flex;
     justify-content: space-between;
+    transition: all .2s ease;
   }
+  .btnContainer.expanded {
+    padding-bottom: 3rem;
+  } 
 
   .eqAdjustBtn {
     background-color: #fff;
@@ -187,10 +201,26 @@
     border: 2px solid rgb(255, 52, 52);
     color: rgb(255, 52, 52);
   }
+
   .clear:hover,
   .clear:focus {
     border: 2px solid rgb(255, 52, 52);
     background-color: rgb(255, 52, 52);
     color: #fff;
   }
+
+  .errorMsg {
+    position: absolute;
+    bottom: 1rem;
+  }
+
+  .fadeIn-enter-active,
+  .fadeIn-leave-active {
+    opacity: 1;
+  }
+
+  .fadeIn-enter-from,
+  .fadeIn-leave-to {
+  opacity: 0;
+}
 </style>
