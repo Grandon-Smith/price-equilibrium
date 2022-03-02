@@ -3,22 +3,32 @@
     <div 
       class='expandableTextBox'
       :class='{ expanded : expandText }'
+      :aria-expanded='expandText'
     >
-      <button @click='expandText = !expandText' type='button'>
+      <button 
+        @click='expandText = !expandText' 
+        type='button' 
+        aria-label='expand information on price equilibrium'
+      >
         <h3>
           {{ headerText }}
         </h3>
         <font-awesome-icon class='svg' icon='fa-solid fa-circle-info'/>
       </button>
-      <div>
-        <p v-for='(content, idx) in bodyText' :key='idx' class='expandBodyPara'>
+      <div v-if='expandText'>
+        <p 
+          v-for='(content, idx) in bodyText' 
+          :key='idx' 
+          class='expandBodyPara' 
+          tabindex="0"
+        >
           {{ content }}
         </p>
-
       </div>
     </div>
   </section>
 </template>
+
 
 
 
@@ -37,7 +47,6 @@ export default {
 
 
 
-
   props: {
     headerText: {
       type: String,
@@ -47,10 +56,10 @@ export default {
       type: Array,
       required: false,
     },
-
   }
 }
 </script>
+
 
 
 

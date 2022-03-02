@@ -1,16 +1,18 @@
 <template>
   <div class="bodyHeader">
-    <h2>
+    <h2 tabindex="0">
       Price Equilibrium
     </h2>
-    <p>
+    <p tabindex="0">
       Learn about the economics of supply and demand.
     </p>
     <div class='tagsContainer'>
       <span 
+        tabindex="0"
         class='subjectTag' 
         v-for='(tag, idx) in tags' 
         :key='idx'
+        :aria-label='"category tag of " + tag'
       >
       {{ tag }}
       </span>
@@ -19,14 +21,13 @@
   </div>
 </template>
 
+
+
+
+
 <script>
-
-
-
 export default {
   name: 'page-data',
-
-
 
 
 
@@ -39,23 +40,10 @@ export default {
       ]
     }
   },
-
-
-
-
-  
-  components: {
-  
-  },
-
-
-  methods: {
-    
-  },
-
-
 }
 </script>
+
+
 
 
 

@@ -4,10 +4,10 @@
     <div class="body">
       <BodyHeader/>
       <div class="basicDescription">
-        <p class='descriptionTitle'>
+        <p class='descriptionTitle' tabindex="0">
           A brief description
         </p>
-        <p class='descriptionBody'>
+        <p class='descriptionBody' tabindex="0">
           The equilibrium price is the price at which
            the quantity demanded equals the quantity 
            supplied. It is determined by the intersection
@@ -21,11 +21,11 @@
         headerText='More details here'
         :bodyText='expanderBodyText'
       />
-      <div>
+      <div class='imgSection'>
         <div class="graphImgWrapper">
-          <img src="https://cdn.kastatic.org/ka-perseus-images/63f47bb804ff4c50a60f967b7b29acdfd5fd450a.jpg" alt="graph showing pricing equilibrium.">
+          <img src="https://cdn.kastatic.org/ka-perseus-images/63f47bb804ff4c50a60f967b7b29acdfd5fd450a.jpg" alt="graph showing pricing equilibrium." tabindex="0">
         </div>
-        <p>
+        <p tabindex="0">
           The demand curve, D, and the supply curve, S, 
           intersect at the equilibrium point E, with an 
           equilibrium price of 1.4 dollars and an equilibrium 
@@ -46,16 +46,15 @@
 </template>
 
 <script>
-
 import Graph from './components/Graph.vue';
 import Header from './components/Header.vue';
 import TextExpander from './components/TextExpander.vue';
 import BodyHeader from './components/BodyHeader.vue'
 
+
+
 export default {
   name: 'App',
-
-
 
 
 
@@ -70,8 +69,6 @@ export default {
   },
 
 
-
-
   
   components: {
     Graph,
@@ -79,18 +76,12 @@ export default {
     TextExpander,
     BodyHeader,
   },
-
-
-  methods: {
-    
-  },
-
-
-  mounted: function() {
-
-  },
 }
 </script>
+
+
+
+
 
 <style>
   :root {
@@ -111,6 +102,7 @@ export default {
     color: rgb(105, 105, 105);
     font-size: .9rem;
     line-height: 1.4em;
+    margin-bottom: 1em;
   }
 
   img {
@@ -134,11 +126,7 @@ export default {
     margin-bottom: .5rem;
   }
 
-  .descriptionBody {
-    font-size: .9rem;
-    color: rgb(105, 105, 105);
-    margin-bottom: .75rem;
-  }
+
 
   .graphImgWrapper {
     border: 1px solid rgba(0, 0, 0, 0.425);
@@ -148,6 +136,31 @@ export default {
     margin-bottom: 1rem;
     margin-top: 1rem;
     overflow: hidden;
+    max-width: 400px;
+  }
+
+  @media only screen and (min-width: 600px) {
+    p {
+      font-size: 1rem;
+      line-height: 1.5em;
+    }
+  }
+
+  @media only screen and (min-width: 900px) {
+    .imgSection {
+      display: flex;
+      margin: 2rem 0 1rem 0;
+    }
+    .graphImgWrapper {
+    margin-bottom: 0;
+    margin-top: 0;
+    min-width: 400px;
+    margin-right: 1.5rem;
+  }
+    .imgSection > p {
+      max-width: 50%;
+    }
+
   }
 
 </style>
