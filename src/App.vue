@@ -281,6 +281,7 @@
           })
         .catch((error) => {
           console.error('Error:', error);
+          this.loadingMsg = 'Error fetching data.';
           this.errorMsg = 'Unable to get pricing data, so we will use placeholder data.'
         })
 
