@@ -275,8 +275,8 @@
             expire: expiration,
           }
             localStorage.setItem('priceData', JSON.stringify(dataObj))
-            this.setPriceData()
-            this.loadingMsg = "Fetching data, please wait."
+            this.setPriceData();
+            this.loadingMsg = null;
 
           })
         .catch((error) => {
@@ -303,6 +303,8 @@
 
     mounted() {
       if(this.checkLocalStorage('priceData')){
+        this.loadingMsg = "Fetching data, please wait."
+
         this.getInitData()
       } else {
         this.setPriceData();
