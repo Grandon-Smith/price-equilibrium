@@ -39,6 +39,7 @@
     padding: 1.5rem .75rem 1.5rem 0;
     display: flex;
     justify-content: space-between;
+    z-index: 5;
   }
 
   h1 {

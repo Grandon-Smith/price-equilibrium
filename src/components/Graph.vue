@@ -133,7 +133,7 @@
     border: solid 2px #000;
     border-color: var(--clr-accent) transparent transparent transparent;
     border-radius: 50%/20px 60px 0 0;
-    transform: rotate(140deg);
+    transform: rotate(135deg);
   }
 
   .demandLine {
@@ -227,6 +227,6 @@
 
   .fadeIn-enter-from,
   .fadeIn-leave-to {
-  opacity: 0;
-}
+    opacity: 0;
+  }
 </style>
