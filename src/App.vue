@@ -61,6 +61,7 @@
             v-for='(btn, idx) in createPriceBtnArr' 
             :key='idx' 
             :value='btn'
+            type='button'
           >
             ${{ btn }}
           </button>
@@ -394,6 +395,11 @@
     margin: .5em;
     cursor: pointer;
     transition: all .2s ease;
+  }
+  .priceBtn:hover,
+  .priceBtn:focus {
+    background-color: var(--clr-accent);
+    color: #fff;
   }
   
   .fadeIn-enter-active,

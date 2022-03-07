@@ -197,10 +197,7 @@
   .eqAdjustBtn:hover,
   .eqAdjustBtn:focus {
     background-color: var(--clr-accent);
-    border: 2px solid var(--clr-accent);
     color: #fff;
-    padding: .25em;
-    cursor: pointer;
   }
 
   .clear {
